@@ -1,14 +1,22 @@
 package FactoryPattern;
 
+import FactoryPattern.ProductTypes.Smartphones;
+
 public class Smartphone extends Smartphones {
 
-    String CPU, RAM, Storage, Inch;
+    String name, CPU, RAM, Storage, Inch;
 
-    Smartphone(String CPU, String RAM, String Storage, String Inch){
+    Smartphone(String name, String CPU, String RAM, String Storage, String Inch){
+        this.name = name;
         this.CPU = CPU;
         this.RAM = RAM;
         this.Storage = Storage;
         this.Inch = Inch;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override

@@ -1,15 +1,23 @@
 package FactoryPattern;
 
+import FactoryPattern.ProductTypes.Laptops;
+
 public class Laptop extends Laptops {
 
-    String CPU, GPU, RAM, Storage, Inch;
+    String name, CPU, GPU, RAM, Storage, Inch;
 
-    Laptop(String CPU, String GPU, String RAM, String Storage, String Inch){
+    Laptop(String name, String CPU, String GPU, String RAM, String Storage, String Inch){
+        this.name = name;
         this.CPU = CPU;
         this.GPU = GPU;
         this.RAM = RAM;
         this.Storage = Storage;
         this.Inch = Inch;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override

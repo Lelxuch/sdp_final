@@ -1,16 +1,22 @@
 package FactoryPattern;
 
-import java.sql.Ref;
+import FactoryPattern.ProductTypes.Monitors;
 
 public class Monitor extends Monitors {
 
-    String Inch, Resolution, Nits, RefreshRate;
+    String name, Inch, Resolution, Nits, RefreshRate;
 
-    Monitor(String Inch, String Resolution, String Nits, String RefreshRate){
+    Monitor(String name, String Inch, String Resolution, String Nits, String RefreshRate){
+        this.name = name;
         this.Inch = Inch;
         this.Resolution = Resolution;
         this.Nits = Nits;
         this.RefreshRate = RefreshRate;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override

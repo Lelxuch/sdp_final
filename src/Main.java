@@ -1,4 +1,7 @@
-import FactoryPattern.*;
+import FactoryPattern.Factory;
+import FactoryPattern.ProductTypes.Laptops;
+import FactoryPattern.ProductTypes.Monitors;
+import FactoryPattern.ProductTypes.Smartphones;
 import ObserverPattern.Client;
 import ObserverPattern.IObserver;
 import ObserverPattern.Server;
@@ -18,11 +21,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Laptops laptop1 = Factory.getLaptop("Intel", "Nvidia", "8gb", "1000gb", "16");
+        Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch");
         laptops.add(laptop1);
-        Monitors monitor1 = Factory.getMonitor("27 inch", "2k", "400", "144hz");
+        Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz");
         monitors.add(monitor1);
-        Smartphones smartphone1 = Factory.getSmartphone("Snapdragon 650", "8gb", "32gb", "6.2");
+        Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5");
         smartphones.add(smartphone1);
         users.add(new User("test", "test"));
         Client client = new Client(server, "test");
