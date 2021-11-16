@@ -23,10 +23,19 @@ public class Main {
 
         Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch");
         laptops.add(laptop1);
+        Laptops laptop2 = Factory.getLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch");
+        laptops.add(laptop2);
+
         Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz");
         monitors.add(monitor1);
+        Monitors monitor2 = Factory.getMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz");
+        monitors.add(monitor2);
+
         Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5");
         smartphones.add(smartphone1);
+        Smartphones smartphone2 = Factory.getSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1");
+        smartphones.add(smartphone2);
+
         users.add(new User("test", "test"));
         Client client = new Client(server, "test");
         server.add((client));
