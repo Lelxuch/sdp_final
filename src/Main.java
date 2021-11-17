@@ -1,3 +1,6 @@
+import DecoratorPattern.DiscountMessage;
+import DecoratorPattern.Message;
+import DecoratorPattern.UserInfo;
 import FactoryPattern.Factory;
 import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;
@@ -39,7 +42,8 @@ public class Main {
         users.add(new User("test", "test"));
         Client client = new Client(server, "test");
         server.add((client));
-        server.addMessage("New message");
+        Message message = new UserInfo(new DiscountMessage("Acer Predator XB253","130 000","Monitor"), "test");
+        server.addMessage(message.decorate());
         server.notifySubs();
 
         String userChoice = "";
