@@ -16,7 +16,7 @@ public class Client implements IObserver {
     @Override
     public void update() {
 
-        this.messages = this.server.getMessages();
+        this.messages = this.server.getMessages(username);
     }
 
     public String getUsername() {

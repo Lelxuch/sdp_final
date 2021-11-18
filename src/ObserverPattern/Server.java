@@ -30,8 +30,12 @@ public class Server implements IObservable {
         notifySubs();
     }
 
-    public ArrayList<String> getMessages() {
-        return this.messages;
+    public ArrayList<String> getMessages(String clientUsername) {
+        ArrayList<String> messagesToSend = new ArrayList<String>();
+        for (int i = 0; i < this.messages.size(); ++i) {
+           messagesToSend.add("Dear, " + clientUsername + "\n" + this.messages.get(i));
+        }
+        return messagesToSend;
     }
 
     public IObserver findClient(String username) {

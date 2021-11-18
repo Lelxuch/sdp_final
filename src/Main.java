@@ -18,6 +18,7 @@ public class Main {
     private static ArrayList<Smartphones> smartphones = new ArrayList<Smartphones>();
     private static ArrayList<Monitors> monitors = new ArrayList<Monitors>();
     private static String signedInUser = "";
+    private static String userChoice = "";
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -40,32 +41,51 @@ public class Main {
         users.add(new User("test", "test"));
         Client client = new Client(server, "test");
         server.add((client));
-        Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"),"Acer Predator XB253");
+        Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"), "Acer Predator XB253");
         server.addMessage(message.decorate());
+        Message message2 = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
+        server.addMessage(message2.decorate());
         server.notifySubs();
-
-        String userChoice = "";
 
         while (true) {
             System.out.println(
-                    "1. Sign in\n" +
-                            "2. Sign up\n" +
+                    "1. User\n" +
+                            "2. Admin/Server\n" +
                             "3. Exit"
             );
             userChoice = scanner.nextLine();
             switch(userChoice) {
                 case "1":
-                    if (authorization()) {
-                        userMenu();
-                    } else {
-                        System.out.println("Wrong username or password");
-                    }
+                    userMenu();
                     break;
                 case "2":
-                    System.out.println(signUp());
+                    adminMenu();
                     break;
                 case "3":
-                    System.out.println("Thank you! Good bye!");
+                    return;
+                default:
+                    System.out.println("no match");
+            }
+        }
+    }
+
+    public static void adminMenu() {
+
+        while (true) {
+            System.out.println(
+                    "1. Create product\n" +
+                            "2. Create discount\n" +
+                            "3. Back"
+            );
+            userChoice = scanner.nextLine();
+            switch (userChoice) {
+                case "1":
+                    createProductMenu();
+                    break;
+                case "2":
+                    createDiscountMenu();
+                    break;
+                case "3":
                     return;
                 default:
                     System.out.println("no match");
@@ -74,14 +94,44 @@ public class Main {
     }
 
     public static void userMenu() {
+
+        while (true) {
+            System.out.println(
+                    "1. Sign in\n" +
+                    "2. Sign up\n" +
+                    "3. Back"
+            );
+            userChoice = scanner.nextLine();
+            switch (userChoice) {
+                case "1":
+                    if (authorization()) {
+                        loggedInUserMenu();
+                    } else {
+                        System.out.println("Wrong username or password");
+                    }
+                    break;
+                case "2":
+                    System.out.println(signUp());
+                    break;
+                case "3":
+                    return;
+                default:
+                    System.out.println("no match");
+            }
+        }
+    }
+
+    public static void loggedInUserMenu() {
+
         System.out.println("You signed in");
+
         while (true) {
             System.out.println("Menu\n" +
                     "1. View products\n" +
                     "2. Subscribe status\n" +
                     "3. Check mail\n" +
                     "4. Log out");
-            String userChoice = scanner.nextLine();
+            userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
                     viewProducts();
@@ -98,12 +148,13 @@ public class Main {
     }
 
     public static void subscribeSettings() {
+
         while (true) {
             System.out.println("Menu\n" +
                     "1. Subscribe\n" +
                     "2. Unsubscribe\n" +
                     "3. Back");
-            String userChoice = scanner.nextLine();
+            userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
 
@@ -118,14 +169,14 @@ public class Main {
     }
 
     public static void viewProducts() {
-        System.out.println("You signed in");
+
         while (true) {
             System.out.println("Menu\n" +
                     "1. Smartphones\n" +
                     "2. Laptops\n" +
                     "3. Monitors\n" +
                     "4. Back");
-            String userChoice = scanner.nextLine();
+            userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
                     showProducts(1);
@@ -140,6 +191,73 @@ public class Main {
                     return;
             }
         }
+    }
+
+    public static void createProductMenu() {
+
+        while (true) {
+            System.out.println("Menu\n" +
+                    "1. Smartphones\n" +
+                    "2. Laptops\n" +
+                    "3. Monitors\n" +
+                    "4. Back");
+            userChoice = scanner.nextLine();
+            if (userChoice.equals("4")) {
+                return;
+            }
+            createProduct(userChoice);
+        }
+    }
+
+    public static void createProduct(String category) {
+
+        String name, CPU, RAM, Storage, Inch, GPU, Resolution, Nits, RefreshRate;
+
+        switch (userChoice) {
+            case "1":
+                System.out.println("Name:");
+                name = scanner.nextLine();
+                System.out.println("CPU:");
+                CPU = scanner.nextLine();
+                System.out.println("RAM:");
+                RAM = scanner.nextLine();
+                System.out.println("Storage:");
+                Storage = scanner.nextLine();
+                System.out.println("Size:");
+                Inch = scanner.nextLine();
+                Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch);
+                smartphones.add(smartphone);
+                server.addMessage("New smartphone product");
+                server.notifySubs();
+                break;
+            case "2":
+//                System.out.println("Name:");
+//                name = scanner.nextLine();
+//                System.out.println("CPU:");
+//                CPU = scanner.nextLine();
+//                System.out.println("RAM:");
+//                RAM = scanner.nextLine();
+//                System.out.println("Storage:");
+//                Storage = scanner.nextLine();
+//                System.out.println("Size:");
+//                Inch = scanner.nextLine();
+//                /*
+//                smartphones.add(smartphone);
+//                server.addMessage("New product");
+//                server.notifySubs();
+//                 */
+                break;
+            case "3":
+
+                break;
+        }
+    }
+
+    public static void createDiscountMenu() {
+
+        Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
+        server.addMessage(message.decorate());
+        server.notifySubs();
     }
 
     public static void checkMail() {
