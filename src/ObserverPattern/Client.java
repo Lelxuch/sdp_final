@@ -24,6 +24,11 @@ public class Client implements IObserver {
         return username;
     }
 
+    @Override
+    public void clearMessages() {
+        this.messages.clear();
+    }
+
     public void printMessages() {
 
         for (int i = 0; i < this.messages.size(); ++i) {

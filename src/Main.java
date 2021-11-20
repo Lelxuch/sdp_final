@@ -7,6 +7,7 @@ import ObserverPattern.Client;
 import ObserverPattern.IObserver;
 import ObserverPattern.Server;
 
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class Main {
     private static ArrayList<Laptops> laptops = new ArrayList<Laptops>();
     private static ArrayList<Smartphones> smartphones = new ArrayList<Smartphones>();
     private static ArrayList<Monitors> monitors = new ArrayList<Monitors>();
-    private static String signedInUser = "";
+    private static User signedInUser;
     private static String userChoice = "";
     static Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +40,7 @@ public class Main {
         smartphones.add(smartphone2);
 
         users.add(new User("test", "test"));
-        Client client = new Client(server, "test");
+        IObserver client = new Client(server, "test");
         server.add((client));
         Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"), "Acer Predator XB253");
         server.addMessage(message.decorate());
@@ -60,30 +61,6 @@ public class Main {
                     break;
                 case "2":
                     adminMenu();
-                    break;
-                case "3":
-                    return;
-                default:
-                    System.out.println("no match");
-            }
-        }
-    }
-
-    public static void adminMenu() {
-
-        while (true) {
-            System.out.println(
-                    "1. Create product\n" +
-                            "2. Create discount\n" +
-                            "3. Back"
-            );
-            userChoice = scanner.nextLine();
-            switch (userChoice) {
-                case "1":
-                    createProductMenu();
-                    break;
-                case "2":
-                    createDiscountMenu();
                     break;
                 case "3":
                     return;
@@ -134,13 +111,14 @@ public class Main {
             userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
-                    viewProducts();
+                    buyProducts();
                     break;
                 case "2":
                     subscribeSettings();
                     break;
                 case "3":
                     checkMail();
+                    break;
                 case "4":
                     return;
             }
@@ -155,12 +133,16 @@ public class Main {
                     "2. Unsubscribe\n" +
                     "3. Back");
             userChoice = scanner.nextLine();
+            IObserver client;
             switch (userChoice) {
                 case "1":
-
+                    client = new Client(server, signedInUser.getUsername());
+                    server.add((client));
                     break;
                 case "2":
-
+                    client = server.findClient(signedInUser.getUsername());
+                    client.clearMessages();
+                    server.remove(client);
                     break;
                 case "3":
                     return;
@@ -168,7 +150,7 @@ public class Main {
         }
     }
 
-    public static void viewProducts() {
+    public static void buyProducts() {
 
         while (true) {
             System.out.println("Menu\n" +
@@ -179,13 +161,23 @@ public class Main {
             userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
-                    showProducts(1);
+                    for (int i = 0; i < smartphones.size(); ++i) {
+                        Smartphones smartphone = smartphones.get(i);
+                        System.out.println((i + 1)+ ". " + smartphone.toString());
+                        
+                    }
                     break;
                 case "2":
-                    showProducts(2);
+                    for (int i = 0; i < laptops.size(); ++i) {
+                        Laptops laptop = laptops.get(i);
+                        System.out.println((i + 1)+ ". " + laptop.toString());
+                    }
                     break;
                 case "3":
-                    showProducts(3);
+                    for (int i = 0; i < monitors.size(); ++i) {
+                        Monitors monitor = monitors.get(i);
+                        System.out.println((i + 1)+ ". " + monitor.toString());
+                    }
                     break;
                 case "4":
                     return;
@@ -193,6 +185,44 @@ public class Main {
         }
     }
 
+    public static void checkMail() {
+
+        IObserver client = server.findClient(signedInUser.getUsername());
+
+        if (client == null) {
+            System.out.println("No subscription");
+        } else {
+            client.printMessages();
+        }
+        return;
+    }
+
+    // Admin
+    public static void adminMenu() {
+
+        while (true) {
+            System.out.println(
+                    "1. Create product\n" +
+                            "2. Create discount\n" +
+                            "3. Back"
+            );
+            userChoice = scanner.nextLine();
+            switch (userChoice) {
+                case "1":
+                    createProductMenu();
+                    break;
+                case "2":
+                    createDiscountMenu();
+                    break;
+                case "3":
+                    return;
+                default:
+                    System.out.println("no match");
+            }
+        }
+    }
+
+    // Create
     public static void createProductMenu() {
 
         while (true) {
@@ -231,24 +261,36 @@ public class Main {
                 server.notifySubs();
                 break;
             case "2":
-//                System.out.println("Name:");
-//                name = scanner.nextLine();
-//                System.out.println("CPU:");
-//                CPU = scanner.nextLine();
-//                System.out.println("RAM:");
-//                RAM = scanner.nextLine();
-//                System.out.println("Storage:");
-//                Storage = scanner.nextLine();
-//                System.out.println("Size:");
-//                Inch = scanner.nextLine();
-//                /*
-//                smartphones.add(smartphone);
-//                server.addMessage("New product");
-//                server.notifySubs();
-//                 */
+                System.out.println("Name:");
+                name = scanner.nextLine();
+                System.out.println("CPU:");
+                CPU = scanner.nextLine();
+                System.out.println("CPU:");
+                GPU = scanner.nextLine();
+                System.out.println("RAM:");
+                RAM = scanner.nextLine();
+                System.out.println("Storage:");
+                Storage = scanner.nextLine();
+                System.out.println("Size:");
+                Inch = scanner.nextLine();
+                Laptops laptop = Factory.getLaptop(name, CPU, GPU, RAM, Storage, Inch);
+                laptops.add(laptop);
+                server.addMessage("New product");
+                server.notifySubs();
                 break;
             case "3":
-
+                System.out.println("Name:");
+                name = scanner.nextLine();
+                System.out.println("Size:");
+                Inch = scanner.nextLine();
+                System.out.println("Resolution:");
+                Resolution = scanner.nextLine();
+                System.out.println("Nits:");
+                Nits = scanner.nextLine();
+                System.out.println("Refresh rate:");
+                RefreshRate = scanner.nextLine();
+                Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate);
+                monitors.add(monitor);
                 break;
         }
     }
@@ -260,44 +302,7 @@ public class Main {
         server.notifySubs();
     }
 
-    public static void checkMail() {
-
-        IObserver client = server.findClient(signedInUser);
-
-        if (client == null) {
-            System.out.println("No subscription");
-        } else {
-            client.printMessages();
-        }
-    }
-
-    public static boolean showProducts(int type) {
-
-        switch (type) {
-            case 1:
-                for (int i = 0; i < smartphones.size(); ++i) {
-                    Smartphones smartphone = smartphones.get(i);
-                    System.out.println((i + 1)+ ". " + smartphone.toString());
-                }
-                break;
-            case 2:
-                for (int i = 0; i < laptops.size(); ++i) {
-                    Laptops laptop = laptops.get(i);
-                    System.out.println((i + 1)+ ". " + laptop.toString());
-                }
-                break;
-            case 3:
-                for (int i = 0; i < monitors.size(); ++i) {
-                    Monitors monitor = monitors.get(i);
-                    System.out.println((i + 1)+ ". " + monitor.toString());
-                }
-                break;
-        }
-
-
-        return false;
-    }
-
+    // Authorization
     public static boolean authorization() {
 
         System.out.println("Username: ");
@@ -308,7 +313,7 @@ public class Main {
         for (int i = 0; i < users.size(); ++i) {
             User user = users.get(i);
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                signedInUser = user.getUsername();
+                signedInUser = user;
                 return true;
             }
         }

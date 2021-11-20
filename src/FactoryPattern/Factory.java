@@ -17,4 +17,5 @@ public class Factory {
     public static Monitors getMonitor(String name, String Inch, String Resolution, String Nits, String RefreshRate) {
         return new Monitor(name, Inch, Resolution, Nits, RefreshRate);
     }
+
 }
