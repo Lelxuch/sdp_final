@@ -1,3 +1,4 @@
+import Data.Data;
 import DecoratorPattern.*;
 import FactoryPattern.Factory;
 import FactoryPattern.ProductTypes.Laptops;
@@ -6,6 +7,7 @@ import FactoryPattern.ProductTypes.Smartphones;
 import ObserverPattern.Client;
 import ObserverPattern.IObserver;
 import ObserverPattern.Server;
+import User.User;
 
 import java.util.Scanner;
 
@@ -45,7 +47,7 @@ public class Main {
 
         while (true) {
             System.out.println(
-                    "1. User\n" +
+                    "1. User.User\n" +
                             "2. Admin/Server\n" +
                             "3. Exit"
             );

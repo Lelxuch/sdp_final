@@ -1,6 +1,9 @@
+package Data;
+
 import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;
 import FactoryPattern.ProductTypes.Smartphones;
+import User.User;
 
 import java.util.ArrayList;
 

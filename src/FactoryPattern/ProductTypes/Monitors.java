@@ -1,6 +1,6 @@
 package FactoryPattern.ProductTypes;
 
-public abstract class Monitors {
+public abstract class Monitors{
 
     public abstract String getName();
     public abstract String getInch();
