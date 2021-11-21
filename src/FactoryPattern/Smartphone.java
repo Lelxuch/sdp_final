@@ -3,10 +3,11 @@ package FactoryPattern;
 import FactoryPattern.ProductTypes.Smartphones;
 
 public class Smartphone extends Smartphones {
-
+    int price;
     String name, CPU, RAM, Storage, Inch;
 
-    Smartphone(String name, String CPU, String RAM, String Storage, String Inch){
+    Smartphone(String name, String CPU, String RAM, String Storage, String Inch, int price){
+        this.price = price;
         this.name = name;
         this.CPU = CPU;
         this.RAM = RAM;
@@ -37,5 +38,10 @@ public class Smartphone extends Smartphones {
     @Override
     public String getInch() {
         return this.Inch;
+    }
+
+    @Override
+    public int getPrice() {
+        return this.price;
     }
 }

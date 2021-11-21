@@ -24,19 +24,19 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch");
+        Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch", 500000);
         laptops.add(laptop1);
-        Laptops laptop2 = Factory.getLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch");
+        Laptops laptop2 = Factory.getLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch", 550000);
         laptops.add(laptop2);
 
-        Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz");
+        Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz", 150000);
         monitors.add(monitor1);
-        Monitors monitor2 = Factory.getMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz");
+        Monitors monitor2 = Factory.getMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz", 130000);
         monitors.add(monitor2);
 
-        Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5");
+        Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5", 150000);
         smartphones.add(smartphone1);
-        Smartphones smartphone2 = Factory.getSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1");
+        Smartphones smartphone2 = Factory.getSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1", 510000);
         smartphones.add(smartphone2);
 
         users.add(new User("test", "test"));
@@ -241,7 +241,7 @@ public class Main {
     }
 
     public static void createProduct(String category) {
-
+        int price;
         String name, CPU, RAM, Storage, Inch, GPU, Resolution, Nits, RefreshRate;
 
         switch (userChoice) {
@@ -256,7 +256,9 @@ public class Main {
                 Storage = scanner.nextLine();
                 System.out.println("Size:");
                 Inch = scanner.nextLine();
-                Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch);
+                System.out.println("Price:");
+                price = scanner.nextInt();
+                Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch, price);
                 smartphones.add(smartphone);
                 server.addMessage("New smartphone product");
                 server.notifySubs();
@@ -266,7 +268,7 @@ public class Main {
                 name = scanner.nextLine();
                 System.out.println("CPU:");
                 CPU = scanner.nextLine();
-                System.out.println("CPU:");
+                System.out.println("GPU:");
                 GPU = scanner.nextLine();
                 System.out.println("RAM:");
                 RAM = scanner.nextLine();
@@ -274,7 +276,9 @@ public class Main {
                 Storage = scanner.nextLine();
                 System.out.println("Size:");
                 Inch = scanner.nextLine();
-                Laptops laptop = Factory.getLaptop(name, CPU, GPU, RAM, Storage, Inch);
+                System.out.println("Price:");
+                price = scanner.nextInt();
+                Laptops laptop = Factory.getLaptop(name, CPU, GPU, RAM, Storage, Inch, price);
                 laptops.add(laptop);
                 server.addMessage("New product");
                 server.notifySubs();
@@ -290,7 +294,9 @@ public class Main {
                 Nits = scanner.nextLine();
                 System.out.println("Refresh rate:");
                 RefreshRate = scanner.nextLine();
-                Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate);
+                System.out.println("Price:");
+                price = scanner.nextInt();
+                Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate, price);
                 monitors.add(monitor);
                 break;
         }

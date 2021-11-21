@@ -8,6 +8,7 @@ public abstract class Laptops {
     public abstract String getStorage();
     public abstract String getRAM();
     public abstract String getInch();
+    public abstract int getPrice();
 
     public String toString(){
         return "Name: " + getName()
@@ -15,6 +16,7 @@ public abstract class Laptops {
                 + ", GPU: " + getGPU()
                 + ", Storage: " + getStorage()
                 + ", RAM: " + getRAM()
-                + ", Screen size: " + getInch();
+                + ", Screen size: " + getInch()
+                + ", Price: " + getPrice();
     }
 }

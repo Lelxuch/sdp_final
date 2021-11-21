@@ -3,10 +3,11 @@ package FactoryPattern;
 import FactoryPattern.ProductTypes.Laptops;
 
 public class Laptop extends Laptops {
-
+    int price;
     String name, CPU, GPU, RAM, Storage, Inch;
 
-    Laptop(String name, String CPU, String GPU, String RAM, String Storage, String Inch){
+    Laptop(String name, String CPU, String GPU, String RAM, String Storage, String Inch, int price){
+        this.price = price;
         this.name = name;
         this.CPU = CPU;
         this.GPU = GPU;
@@ -43,5 +44,10 @@ public class Laptop extends Laptops {
     @Override
     public String getInch() {
         return this.Inch;
+    }
+
+    @Override
+    public int getPrice() {
+        return this.price;
     }
 }

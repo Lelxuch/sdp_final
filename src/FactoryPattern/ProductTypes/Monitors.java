@@ -7,12 +7,14 @@ public abstract class Monitors {
     public abstract String getResolution();
     public abstract String getNits();
     public abstract String getRefreshRate();
+    public abstract int getPrice();
 
     public String toString(){
         return "Name: " + getName()
                 + ", Screen size: " + getInch()
                 + ", Resolution: " + getResolution()
                 + ", Nits: " + getNits()
-                + ", Refresh rate: " + getRefreshRate();
+                + ", Refresh rate: " + getRefreshRate()
+                + ", Price: " + getPrice();
     }
 }
