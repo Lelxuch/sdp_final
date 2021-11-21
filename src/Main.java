@@ -14,10 +14,7 @@ import java.util.Scanner;
 public class Main {
 
     private static Server server = new Server();
-    private static ArrayList<User> users = new ArrayList<User>();
-    private static ArrayList<Laptops> laptops = new ArrayList<Laptops>();
-    private static ArrayList<Smartphones> smartphones = new ArrayList<Smartphones>();
-    private static ArrayList<Monitors> monitors = new ArrayList<Monitors>();
+    private static Data data = new Data();
     private static User signedInUser;
     private static String userChoice = "";
     static Scanner scanner = new Scanner(System.in);
@@ -25,21 +22,21 @@ public class Main {
     public static void main(String[] args) {
 
         Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch", 500000);
-        laptops.add(laptop1);
+        data.laptops.add(laptop1);
         Laptops laptop2 = Factory.getLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch", 550000);
-        laptops.add(laptop2);
+        data.laptops.add(laptop2);
 
         Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz", 150000);
-        monitors.add(monitor1);
+        data.monitors.add(monitor1);
         Monitors monitor2 = Factory.getMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz", 130000);
-        monitors.add(monitor2);
+        data.monitors.add(monitor2);
 
         Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5", 150000);
-        smartphones.add(smartphone1);
+        data.smartphones.add(smartphone1);
         Smartphones smartphone2 = Factory.getSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1", 510000);
-        smartphones.add(smartphone2);
+        data.smartphones.add(smartphone2);
 
-        users.add(new User("test", "test"));
+        data.users.add(new User("test", "test"));
         IObserver client = new Client(server, "test");
         server.add((client));
         Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"), "Acer Predator XB253");
@@ -161,22 +158,21 @@ public class Main {
             userChoice = scanner.nextLine();
             switch (userChoice) {
                 case "1":
-                    for (int i = 0; i < smartphones.size(); ++i) {
-                        Smartphones smartphone = smartphones.get(i);
+                    for (int i = 0; i < data.smartphones.size(); ++i) {
+                        Smartphones smartphone = data.smartphones.get(i);
                         System.out.println((i + 1)+ ". " + smartphone.toString());
                     }
                     userChoice = scanner.nextLine();
-
                     break;
                 case "2":
-                    for (int i = 0; i < laptops.size(); ++i) {
-                        Laptops laptop = laptops.get(i);
+                    for (int i = 0; i < data.laptops.size(); ++i) {
+                        Laptops laptop = data.laptops.get(i);
                         System.out.println((i + 1)+ ". " + laptop.toString());
                     }
                     break;
                 case "3":
-                    for (int i = 0; i < monitors.size(); ++i) {
-                        Monitors monitor = monitors.get(i);
+                    for (int i = 0; i < data.monitors.size(); ++i) {
+                        Monitors monitor = data.monitors.get(i);
                         System.out.println((i + 1)+ ". " + monitor.toString());
                     }
                     break;
@@ -259,7 +255,7 @@ public class Main {
                 System.out.println("Price:");
                 price = scanner.nextInt();
                 Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch, price);
-                smartphones.add(smartphone);
+                data.smartphones.add(smartphone);
                 server.addMessage("New smartphone product");
                 server.notifySubs();
                 break;
@@ -279,7 +275,7 @@ public class Main {
                 System.out.println("Price:");
                 price = scanner.nextInt();
                 Laptops laptop = Factory.getLaptop(name, CPU, GPU, RAM, Storage, Inch, price);
-                laptops.add(laptop);
+                data.laptops.add(laptop);
                 server.addMessage("New product");
                 server.notifySubs();
                 break;
@@ -297,7 +293,7 @@ public class Main {
                 System.out.println("Price:");
                 price = scanner.nextInt();
                 Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate, price);
-                monitors.add(monitor);
+                data.monitors.add(monitor);
                 break;
         }
     }
@@ -317,8 +313,8 @@ public class Main {
         System.out.println("Password: ");
         String password = scanner.nextLine();
 
-        for (int i = 0; i < users.size(); ++i) {
-            User user = users.get(i);
+        for (int i = 0; i < data.users.size(); ++i) {
+            User user = data.users.get(i);
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 signedInUser = user;
                 return true;
@@ -335,7 +331,7 @@ public class Main {
         String password = scanner.nextLine();
 
         User user = new User(username, password);
-        users.add(user);
+        data.users.add(user);
 
         return "You signed up";
     }
