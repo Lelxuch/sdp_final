@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class RefreshRateDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class RefreshRateDecorator extends Decorator {
     String RefreshRate;
 
     public RefreshRateDecorator(Message message, String RefreshRate) {

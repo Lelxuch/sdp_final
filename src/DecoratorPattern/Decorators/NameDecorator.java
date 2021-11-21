@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class NameDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class NameDecorator extends Decorator {
     String name;
 
     public NameDecorator(Message message, String name) {

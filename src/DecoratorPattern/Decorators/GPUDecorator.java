@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class GPUDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class GPUDecorator extends Decorator {
     String GPU;
 
     public GPUDecorator(Message message, String GPU) {

@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class CPUDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class CPUDecorator extends Decorator {
     String CPU;
 
     public CPUDecorator(Message message, String CPU) {

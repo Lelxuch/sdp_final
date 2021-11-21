@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class StorageDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class StorageDecorator extends Decorator {
     String Storage;
 
     public StorageDecorator(Message message, String Storage) {

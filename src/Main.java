@@ -1,5 +1,8 @@
 import Data.Data;
 import DecoratorPattern.*;
+import DecoratorPattern.Decorators.CategoryDecorator;
+import DecoratorPattern.Decorators.DiscountPriceDecorator;
+import DecoratorPattern.Decorators.NameDecorator;
 import FactoryPattern.Factory;
 import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;

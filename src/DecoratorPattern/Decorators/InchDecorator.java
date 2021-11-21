@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class InchDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class InchDecorator extends Decorator {
     String Inch;
 
     public InchDecorator(Message message, String Inch) {

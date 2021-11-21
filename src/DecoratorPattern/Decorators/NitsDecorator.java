@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class NitsDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class NitsDecorator extends Decorator {
     String Nits;
 
     public NitsDecorator(Message message, String Nits) {

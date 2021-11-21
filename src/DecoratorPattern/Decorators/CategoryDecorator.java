@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class CategoryDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class CategoryDecorator extends Decorator {
     String category;
 
     public CategoryDecorator(Message message, String category) {

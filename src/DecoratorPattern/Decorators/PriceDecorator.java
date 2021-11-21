@@ -1,9 +1,12 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class DiscountPriceDecorator extends Decorator{
-    String price;
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
 
-    public DiscountPriceDecorator(Message message, String price) {
+public class PriceDecorator extends Decorator {
+    int price;
+
+    public PriceDecorator(Message message, int price) {
         super(message);
         this.price = price;
     }
