@@ -163,18 +163,23 @@ public class Main {
                         System.out.println((i + 1)+ ". " + smartphone.toString());
                     }
                     userChoice = scanner.nextLine();
+                    Smartphones smartphone = data.smartphones.get(Integer.parseInt(userChoice) - 1);
                     break;
                 case "2":
                     for (int i = 0; i < data.laptops.size(); ++i) {
                         Laptops laptop = data.laptops.get(i);
                         System.out.println((i + 1)+ ". " + laptop.toString());
                     }
+                    userChoice = scanner.nextLine();
+                    Laptops laptop = data.laptops.get(Integer.parseInt(userChoice) - 1);
                     break;
                 case "3":
                     for (int i = 0; i < data.monitors.size(); ++i) {
                         Monitors monitor = data.monitors.get(i);
                         System.out.println((i + 1)+ ". " + monitor.toString());
                     }
+                    userChoice = scanner.nextLine();
+                    Monitors monitor = data.monitors.get(Integer.parseInt(userChoice) - 1);
                     break;
                 case "4":
                     return;
