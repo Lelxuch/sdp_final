@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/justsxmedude/Documents/AITU/Subjects/Software design patterns/sdp_final/src</OriginalElement>
+  <nodes>
+    <node x="-256.40780466263595" y="621.2242403691323">BridgePattern.BMonitor</node>
+    <node x="1196.592195337364" y="747.6506292520723">StrategyPattern.PayPal</node>
+    <node x="1743.8145926266207" y="-493.19859147557713">AdapterPattern.NewProductAdapter</node>
+    <node x="2984.5276027107434" y="589.5458808641484">ObserverPattern.IObserver</node>
+    <node x="311.0980437757412" y="-410.5386780138466">FactoryPattern.ProductTypes.Smartphones</node>
+    <node x="1292.592195337364" y="642.6506292520723">StrategyPattern.PaymentMethod</node>
+    <node x="2120.8145926266207" y="-642.1985914755771">AdapterPattern.IDefaultCreateNewProduct</node>
+    <node x="-256.40780466263595" y="1700.4213692659246">DecoratorPattern.Decorators.StorageDecorator</node>
+    <node x="562.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.ResolutionDecorator</node>
+    <node x="872.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.NameDecorator</node>
+    <node x="2077.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.GPUDecorator</node>
+    <node x="2926.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.NitsDecorator</node>
+    <node x="2497.8145926266207" y="-493.19859147557713">AdapterPattern.DefaultCreateNewProduct</node>
+    <node x="18.092195337364046" y="919.3591517398952">BridgePattern.Colors.Color</node>
+    <node x="1576.342195337364" y="1549.4213692659246">DecoratorPattern.DiscountMessage</node>
+    <node x="2649.092195337364" y="589.5458808641484">ObserverPattern.IObservable</node>
+    <node x="1594.342195337364" y="1444.4213692659243">DecoratorPattern.Message</node>
+    <node x="1613.592195337364" y="642.6506292520723">StrategyPattern.BuyProduct</node>
+    <node x="202.59219533736405" y="621.2242403691323">BridgePattern.BSmartphone</node>
+    <node x="-125.90780466263595" y="1046.3591517398952">BridgePattern.Colors.Blue</node>
+    <node x="18.092195337364046" y="1046.3591517398952">BridgePattern.Colors.Black</node>
+    <node x="2131.8145926266207" y="-70.62881865153076">AdapterPattern.DefaultNewProductMessage</node>
+    <node x="622.5980437757412" y="-149.5386780138466">FactoryPattern.Monitor</node>
+    <node x="1152.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.RefreshRateDecorator</node>
+    <node x="2350.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.RAMDecorator</node>
+    <node x="291.59219533736405" y="1700.4213692659246">DecoratorPattern.Decorators.InchDecorator</node>
+    <node x="2600.592195337364" y="739.5458808641484">ObserverPattern.Server</node>
+    <node x="7.592195337364046" y="436.2242403691323">BridgePattern.Product</node>
+    <node x="2624.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.CategoryDecorator</node>
+    <node x="2131.8145926266207" y="-219.62881865153076">AdapterPattern.IDefaultNewProductMessage</node>
+    <node x="149.5980437757412" y="-600.8418724656095">FactoryPattern.Factory</node>
+    <node x="-22.407804662635954" y="610.2242403691323">BridgePattern.BLaptop</node>
+    <node x="715.5980437757412" y="-410.5386780138466">FactoryPattern.ProductTypes.Monitors</node>
+    <node x="1473.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.DiscountPriceDecorator</node>
+    <node x="36.592195337364046" y="1700.4213692659246">DecoratorPattern.Decorators.PriceDecorator</node>
+    <node x="201.5980437757412" y="-149.5386780138466">FactoryPattern.Smartphone</node>
+    <node x="272.4625391681964" y="-1392.5773560276932">User.User</node>
+    <node x="1392.592195337364" y="747.6506292520723">StrategyPattern.KaspiGold</node>
+    <node x="-137.40780466263595" y="-410.5386780138466">FactoryPattern.ProductTypes.Laptops</node>
+    <node x="1376.342195337364" y="1549.4213692659246">DecoratorPattern.Decorator</node>
+    <node x="1643.592195337364" y="793.6506292520723">StrategyPattern.Shop</node>
+    <node x="162.09219533736405" y="1046.3591517398952">BridgePattern.Colors.Red</node>
+    <node x="560.8833710324832" y="-1392.5773560276932">Data.Data</node>
+    <node x="1788.342195337364" y="1549.4213692659246">DecoratorPattern.NewProductMessage</node>
+    <node x="1805.592195337364" y="1700.4213692659246">DecoratorPattern.Decorators.CPUDecorator</node>
+    <node x="-256.40780466263595" y="-127.5386780138466">FactoryPattern.Laptop</node>
+    <node x="2963.5276027107434" y="761.5458808641484">ObserverPattern.Client</node>
+    <node x="-264.907804662636" y="-1392.577356027693">Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="DecoratorPattern.Decorators.PriceDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="154.09219533736405" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="AdapterPattern.DefaultNewProductMessage" target="AdapterPattern.IDefaultNewProductMessage" relationship="REALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="DecoratorPattern.NewProductMessage" target="DecoratorPattern.Message" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="1897.842195337364" y="1524.4213692659246" />
+      <point x="1672.342195337364" y="1524.4213692659246" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="FactoryPattern.Monitor" target="FactoryPattern.ProductTypes.Monitors" relationship="GENERALIZATION">
+      <point x="0.0" y="-94.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="BridgePattern.Colors.Blue" target="BridgePattern.Colors.Color" relationship="REALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="-63.907804662635954" y="1021.3591517398952" />
+      <point x="80.09219533736405" y="1021.3591517398952" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="AdapterPattern.NewProductAdapter" target="AdapterPattern.IDefaultCreateNewProduct" relationship="REALIZATION">
+      <point x="0.0" y="-105.5" />
+      <point x="2110.8145926266207" y="-518.1985914755771" />
+      <point x="2487.8145926266207" y="-518.1985914755771" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="BridgePattern.BLaptop" target="BridgePattern.Product" relationship="GENERALIZATION">
+      <point x="0.0" y="-117.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="StrategyPattern.PayPal" target="StrategyPattern.PaymentMethod" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="1284.592195337364" y="722.6506292520723" />
+      <point x="1382.592195337364" y="722.6506292520723" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="BridgePattern.BSmartphone" target="BridgePattern.Product" relationship="GENERALIZATION">
+      <point x="0.0" y="-106.0" />
+      <point x="337.59219533736405" y="585.2242403691323" />
+      <point x="80.09219533736405" y="585.2242403691323" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.RefreshRateDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="1303.092195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.DiscountMessage" target="DecoratorPattern.Message" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.RAMDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="2477.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.CPUDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="1931.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="BridgePattern.BMonitor" target="BridgePattern.Product" relationship="GENERALIZATION">
+      <point x="0.0" y="-106.0" />
+      <point x="-149.40780466263595" y="585.2242403691323" />
+      <point x="80.09219533736405" y="585.2242403691323" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="ObserverPattern.Server" target="ObserverPattern.IObservable" relationship="REALIZATION">
+      <point x="0.0" y="-117.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.NitsDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="3051.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.ResolutionDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="707.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.NameDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="1002.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="BridgePattern.Colors.Red" target="BridgePattern.Colors.Color" relationship="REALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="224.09219533736405" y="1021.3591517398952" />
+      <point x="80.09219533736405" y="1021.3591517398952" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="AdapterPattern.DefaultCreateNewProduct" target="AdapterPattern.IDefaultCreateNewProduct" relationship="REALIZATION">
+      <point x="0.0" y="-61.0" />
+      <point x="2864.8145926266207" y="-518.1985914755771" />
+      <point x="2487.8145926266207" y="-518.1985914755771" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.InchDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="417.09219533736405" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="FactoryPattern.Laptop" target="FactoryPattern.ProductTypes.Laptops" relationship="GENERALIZATION">
+      <point x="0.0" y="-105.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.StorageDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="-119.90780466263595" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="StrategyPattern.KaspiGold" target="StrategyPattern.PaymentMethod" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="1480.592195337364" y="722.6506292520723" />
+      <point x="1382.592195337364" y="722.6506292520723" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="BridgePattern.Colors.Black" target="BridgePattern.Colors.Color" relationship="REALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="ObserverPattern.Client" target="ObserverPattern.IObserver" relationship="REALIZATION">
+      <point x="0.0" y="-95.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.GPUDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="2204.092195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="StrategyPattern.Shop" target="StrategyPattern.BuyProduct" relationship="GENERALIZATION">
+      <point x="0.0" y="-27.5" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.DiscountPriceDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="1629.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="FactoryPattern.Smartphone" target="FactoryPattern.ProductTypes.Smartphones" relationship="GENERALIZATION">
+      <point x="0.0" y="-94.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorators.CategoryDecorator" target="DecoratorPattern.Decorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="2765.592195337364" y="1675.4213692659246" />
+      <point x="1466.342195337364" y="1675.4213692659246" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="DecoratorPattern.Decorator" target="DecoratorPattern.Message" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="1466.342195337364" y="1524.4213692659246" />
+      <point x="1672.342195337364" y="1524.4213692659246" />
+      <point x="0.0" y="27.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.23265168525851004" showDependencies="false" x="1608.6629009919216" y="-580.4199739218272" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
