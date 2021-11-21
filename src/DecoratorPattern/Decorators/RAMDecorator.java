@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class RAMDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class RAMDecorator extends Decorator {
     String RAM;
 
     public RAMDecorator(Message message, String RAM) {

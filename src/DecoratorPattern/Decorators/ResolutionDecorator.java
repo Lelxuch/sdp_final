@@ -1,6 +1,9 @@
-package DecoratorPattern;
+package DecoratorPattern.Decorators;
 
-public class ResolutionDecorator extends Decorator{
+import DecoratorPattern.Decorator;
+import DecoratorPattern.Message;
+
+public class ResolutionDecorator extends Decorator {
     String Resolution;
 
     public ResolutionDecorator(Message message, String Resolution) {
