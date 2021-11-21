@@ -5,6 +5,8 @@ import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;
 import FactoryPattern.ProductTypes.Smartphones;
 
+import java.util.ArrayList;
+
 public class DefaultCreateNewProduct implements IDefaultCreateNewProduct{
     @Override
     public ArrayList<Monitors> CreateMonitor(String name, String Inch, String Resolution, String Nits, String RefreshRate, int price, ArrayList<Monitors> monitors) {
