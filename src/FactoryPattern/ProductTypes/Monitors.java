@@ -8,6 +8,7 @@ public abstract class Monitors{
     public abstract String getNits();
     public abstract String getRefreshRate();
     public abstract int getPrice();
+    public abstract void setPrice(int price);
 
     public String toString(){
         return "Name: " + getName()

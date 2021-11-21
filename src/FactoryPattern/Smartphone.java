@@ -44,4 +44,29 @@ public class Smartphone extends Smartphones {
     public int getPrice() {
         return this.price;
     }
+
+    @Override
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCPU(String CPU) {
+        this.CPU = CPU;
+    }
+
+    public void setRAM(String RAM) {
+        this.RAM = RAM;
+    }
+
+    public void setStorage(String storage) {
+        Storage = storage;
+    }
+
+    public void setInch(String inch) {
+        Inch = inch;
+    }
 }

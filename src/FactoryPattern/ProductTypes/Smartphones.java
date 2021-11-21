@@ -8,6 +8,7 @@ public abstract class Smartphones {
     public abstract String getStorage();
     public abstract String getInch();
     public abstract int getPrice();
+    public abstract void setPrice(int price);
 
 
     public String toString(){

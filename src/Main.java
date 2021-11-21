@@ -442,10 +442,64 @@ public class Main {
     }
 
     public static void createDiscountMenu() {
+        System.out.println("Menu\n" +
+                "1. Smartphones\n" +
+                "2. Laptops\n" +
+                "3. Monitors\n" +
+                "4. Back");
+        userChoice = scanner.nextLine();
+        if (userChoice.equals("4")) {
+            return;
+        }
+        createDiscount(userChoice);
+    }
 
-        Message message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
-        server.addMessage(message.decorate());
-        server.notifySubs();
+    public static void createDiscount(String category) {
+
+        switch (category) {
+            case "1":
+                for (int i = 0; i < data.smartphones.size(); ++i) {
+                    System.out.println((i + 1) + ". " + data.smartphones.get(i).toString());
+                }
+                int discount = scanner.nextInt();
+                Smartphones smartphone = data.smartphones.get(discount - 1);
+                System.out.println("Set new price: ");
+                int newPrice = scanner.nextInt();
+
+                Message message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), newPrice + ", Previous price: " + smartphone.getPrice()), "Smartphone"), smartphone.getName());
+                smartphone.setPrice(newPrice);
+                server.addMessage(message.decorate());
+                server.notifySubs();
+                break;
+            case "2":
+                for (int i = 0; i < data.laptops.size(); ++i) {
+                    System.out.println((i + 1) + ". " + data.laptops.get(i).toString());
+                }
+                discount = scanner.nextInt();
+                Laptops laptop = data.laptops.get(discount - 1);
+                System.out.println("Set new price: ");
+                newPrice = scanner.nextInt();
+
+                message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), newPrice + ", Previous price: " + laptop.getPrice()), "Laptop"), laptop.getName());
+                laptop.setPrice(newPrice);
+                server.addMessage(message.decorate());
+                server.notifySubs();
+                break;
+            case "3":
+                for (int i = 0; i < data.monitors.size(); ++i) {
+                    System.out.println((i + 1) + ". " + data.monitors.get(i).toString());
+                }
+                discount = scanner.nextInt();
+                Monitors monitor = data.monitors.get(discount - 1);
+                System.out.println("Set new price: ");
+                newPrice = scanner.nextInt();
+
+                message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), newPrice + ", Previous price: " + monitor.getPrice()), "Monitor"), monitor.getName());
+                monitor.setPrice(newPrice);
+                server.addMessage(message.decorate());
+                server.notifySubs();
+                break;
+        }
     }
 
     // Authorization

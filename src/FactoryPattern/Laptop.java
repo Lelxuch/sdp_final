@@ -50,4 +50,9 @@ public class Laptop extends Laptops {
     public int getPrice() {
         return this.price;
     }
+
+    @Override
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

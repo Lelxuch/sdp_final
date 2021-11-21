@@ -9,6 +9,7 @@ public abstract class Laptops {
     public abstract String getRAM();
     public abstract String getInch();
     public abstract int getPrice();
+    public abstract void setPrice(int price);
 
     public String toString(){
         return "Name: " + getName()
