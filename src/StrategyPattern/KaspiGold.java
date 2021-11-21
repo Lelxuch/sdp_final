@@ -1,8 +1,8 @@
 package StrategyPattern;
 
-public class PayPal implements PaymentMethod{
+public class KaspiGold implements PaymentMethod{
 
-    private int cashback = 5;
+    int cashback = 10;
 
     @Override
     public int getCashback(int cost) {

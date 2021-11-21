@@ -10,6 +10,10 @@ import FactoryPattern.ProductTypes.Smartphones;
 import ObserverPattern.Client;
 import ObserverPattern.IObserver;
 import ObserverPattern.Server;
+import StrategyPattern.BuyProduct;
+import StrategyPattern.PayPal;
+import StrategyPattern.PaymentMethod;
+import StrategyPattern.Shop;
 import User.User;
 
 import java.util.Scanner;
@@ -50,7 +54,7 @@ public class Main {
 
         while (true) {
             System.out.println(
-                    "1. User.User\n" +
+                    "1. User\n" +
                             "2. Admin/Server\n" +
                             "3. Exit"
             );
@@ -104,7 +108,7 @@ public class Main {
 
         while (true) {
             System.out.println("Menu\n" +
-                    "1. View products\n" +
+                    "1. Buy product\n" +
                     "2. Subscribe status\n" +
                     "3. Check mail\n" +
                     "4. Log out");
@@ -159,30 +163,87 @@ public class Main {
                     "3. Monitors\n" +
                     "4. Back");
             userChoice = scanner.nextLine();
+            PaymentMethod paymentMethod;
+            BuyProduct shop;
+            int cashback = 0;
             switch (userChoice) {
                 case "1":
                     for (int i = 0; i < data.smartphones.size(); ++i) {
                         Smartphones smartphone = data.smartphones.get(i);
                         System.out.println((i + 1)+ ". " + smartphone.toString());
                     }
+                    System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Smartphones smartphone = data.smartphones.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. PayPal\n" +
+                            "2. Kaspi gold");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(smartphone.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                        case "2":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(smartphone.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                    }
                     break;
                 case "2":
                     for (int i = 0; i < data.laptops.size(); ++i) {
                         Laptops laptop = data.laptops.get(i);
                         System.out.println((i + 1)+ ". " + laptop.toString());
                     }
+                    System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Laptops laptop = data.laptops.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. PayPal\n" +
+                            "2. Kaspi gold");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(laptop.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                        case "2":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(laptop.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                    }
                     break;
                 case "3":
                     for (int i = 0; i < data.monitors.size(); ++i) {
                         Monitors monitor = data.monitors.get(i);
                         System.out.println((i + 1)+ ". " + monitor.toString());
                     }
+                    System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Monitors monitor = data.monitors.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. PayPal\n" +
+                            "2. Kaspi gold");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(monitor.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                        case "2":
+                            paymentMethod = new PayPal();
+                            shop = new Shop(paymentMethod);
+                            cashback = shop.getCashBack(monitor.getPrice());
+                            System.out.println("Successful! Your cashback: " + cashback);
+                            break;
+                    }
                     break;
                 case "4":
                     return;

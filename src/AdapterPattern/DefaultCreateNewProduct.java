@@ -9,7 +9,6 @@ public class DefaultCreateNewProduct implements IDefaultCreateNewProduct{
     @Override
     public void CreateMonitor(String name, String Inch, String Resolution, String Nits, String RefreshRate, int price) {
         Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate, price);
-        data.laptops.add(laptop1);
     }
 
     @Override
