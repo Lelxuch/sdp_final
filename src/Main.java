@@ -7,8 +7,6 @@ import ObserverPattern.Client;
 import ObserverPattern.IObserver;
 import ObserverPattern.Server;
 
-import java.sql.Ref;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -39,9 +37,9 @@ public class Main {
         data.users.add(new User("test", "test"));
         IObserver client = new Client(server, "test");
         server.add((client));
-        Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"), "Acer Predator XB253");
+        Message message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), "130 000, Previous price: 150 000"), "Monitor"), "Acer Predator XB253");
         server.addMessage(message.decorate());
-        Message message2 = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
+        Message message2 = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
         server.addMessage(message2.decorate());
         server.notifySubs();
 
@@ -300,7 +298,7 @@ public class Main {
 
     public static void createDiscountMenu() {
 
-        Message message = new NameDecorator(new CategoryDecorator(new PriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
+        Message message = new NameDecorator(new CategoryDecorator(new DiscountPriceDecorator(new DiscountMessage(), "110 000, Previous price: 130 000"), "Monitor"), "GIGABYTE G27F");
         server.addMessage(message.decorate());
         server.notifySubs();
     }

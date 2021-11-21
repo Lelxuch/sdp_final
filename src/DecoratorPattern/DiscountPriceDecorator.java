@@ -1,9 +1,9 @@
 package DecoratorPattern;
 
-public class PriceDecorator extends Decorator{
+public class DiscountPriceDecorator extends Decorator{
     String price;
 
-    public PriceDecorator(Message message, String price) {
+    public DiscountPriceDecorator(Message message, String price) {
         super(message);
         this.price = price;
     }
