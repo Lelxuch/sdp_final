@@ -4,11 +4,13 @@ import FactoryPattern.Factory;
 import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;
 import FactoryPattern.ProductTypes.Smartphones;
+import ObserverPattern.Server;
 
 import java.util.ArrayList;
 
 public class NewProductAdapter implements IDefaultCreateNewProduct{
     DefaultNewProductMessage defaultNewProductMessage;
+    Server server;
 
     public NewProductAdapter(DefaultNewProductMessage defaultNewProductMessage) {
         this.defaultNewProductMessage = defaultNewProductMessage;
@@ -18,7 +20,7 @@ public class NewProductAdapter implements IDefaultCreateNewProduct{
     public ArrayList<Monitors> CreateMonitor(String name, String Inch, String Resolution, String Nits, String RefreshRate, int price, ArrayList<Monitors> monitors) {
         Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate, price);
         monitors.add(monitor);
-        defaultNewProductMessage.CreateMonitorMessage(name, Inch, Resolution, Nits, RefreshRate, price);
+        defaultNewProductMessage.CreateMonitorMessage(name, Inch, Resolution, Nits, RefreshRate, price, server.getMessages());
         return monitors;
     }
 
@@ -26,7 +28,7 @@ public class NewProductAdapter implements IDefaultCreateNewProduct{
     public ArrayList<Smartphones> CreateSmartphone(String name, String CPU, String RAM, String Storage, String Inch, int price, ArrayList<Smartphones> smartphones) {
         Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch, price);
         smartphones.add(smartphone);
-        defaultNewProductMessage.CreateSmartphoneMessage(name, CPU, RAM, Storage, Inch, price);
+        defaultNewProductMessage.CreateSmartphoneMessage(name, CPU, RAM, Storage, Inch, price, server.getMessages());
         return smartphones;
     }
 
@@ -34,7 +36,14 @@ public class NewProductAdapter implements IDefaultCreateNewProduct{
     public ArrayList<Laptops> CreateLaptop(String name, String CPU, String GPU, String RAM, String Storage, String Inch, int price, ArrayList<Laptops> laptops) {
         Laptops laptop = Factory.getLaptop(name,CPU, CPU, RAM, Storage, Inch, price);
         laptops.add(laptop);
-        defaultNewProductMessage.CreateLaptopMessage(name, CPU, GPU, RAM, Storage, Inch, price);
+        defaultNewProductMessage.CreateLaptopMessage(name, CPU, GPU, RAM, Storage, Inch, price, server.getMessages());
         return laptops;
+    }
+
+    public void getServer(Server server){
+        this.server = server;
+    }
+    public Server updateServer(){
+        return server;
     }
 }

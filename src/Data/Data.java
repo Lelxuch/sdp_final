@@ -23,4 +23,16 @@ public class Data {
     public void UpdateMonitor(ArrayList<Monitors> monitors){
         this.monitors = monitors;
     }
+
+    public ArrayList<Laptops> getLaptops() {
+        return laptops;
+    }
+
+    public ArrayList<Smartphones> getSmartphones() {
+        return smartphones;
+    }
+
+    public ArrayList<Monitors> getMonitors() {
+        return monitors;
+    }
 }

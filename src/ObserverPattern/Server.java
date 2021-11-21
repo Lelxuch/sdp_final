@@ -1,5 +1,7 @@
 package ObserverPattern;
 
+import FactoryPattern.ProductTypes.Monitors;
+
 import java.util.ArrayList;
 
 public class Server implements IObservable {
@@ -47,5 +49,8 @@ public class Server implements IObservable {
             }
         }
         return null;
+    }
+    public ArrayList<String> getMessages(){
+        return messages;
     }
 }

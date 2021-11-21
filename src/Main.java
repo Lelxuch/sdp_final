@@ -1,3 +1,6 @@
+import AdapterPattern.DefaultNewProductMessage;
+import AdapterPattern.IDefaultNewProductMessage;
+import AdapterPattern.NewProductAdapter;
 import Data.Data;
 import DecoratorPattern.*;
 import DecoratorPattern.Decorators.CategoryDecorator;
@@ -25,23 +28,22 @@ public class Main {
     private static User signedInUser;
     private static String userChoice = "";
     static Scanner scanner = new Scanner(System.in);
+    private static final DefaultNewProductMessage defaultNewProductMessage = new DefaultNewProductMessage();
+    private static NewProductAdapter newProductAdapter = new NewProductAdapter(defaultNewProductMessage);
 
     public static void main(String[] args) {
+        newProductAdapter.getServer(server);
 
-        Laptops laptop1 = Factory.getLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch", 500000);
-        data.laptops.add(laptop1);
-        Laptops laptop2 = Factory.getLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch", 550000);
-        data.laptops.add(laptop2);
+        data.UpdateLaptop(newProductAdapter.CreateLaptop("Asus ROG Strix G17","Ryzen 7 4800H", "RTX 3050", "16GB", "1000GB HDD", "17.3 inch", 500000, data.getLaptops()));
+        data.UpdateLaptop(newProductAdapter.CreateLaptop("Apple MacBook Air Retina M1","Apple M1", "Neural Engine", "16GB", "256GB SSD", "13 inch", 550000, data.getLaptops()));
 
-        Monitors monitor1 = Factory.getMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz", 150000);
-        data.monitors.add(monitor1);
-        Monitors monitor2 = Factory.getMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz", 130000);
-        data.monitors.add(monitor2);
+        data.UpdateMonitor(newProductAdapter.CreateMonitor("Acer Predator XB253", "24.5 inch", "FullHD", "400", "144hz", 150000, data.getMonitors()));
+        data.UpdateMonitor(newProductAdapter.CreateMonitor("GIGABYTE G27F", "27 inch", "FullHD", "300", "144hz", 130000, data.getMonitors()));
 
-        Smartphones smartphone1 = Factory.getSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5", 150000);
-        data.smartphones.add(smartphone1);
-        Smartphones smartphone2 = Factory.getSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1", 510000);
-        data.smartphones.add(smartphone2);
+        data.UpdateSmartphone(newProductAdapter.CreateSmartphone("Samsung Galaxy A52", "Snapdragon 720G", "8GB", "256GB", "6.5", 150000, data.getSmartphones()));
+        data.UpdateSmartphone(newProductAdapter.CreateSmartphone("Apple iPhone 13", "A15 Bionic", "4GB", "128GB", "6.1", 510000, data.getSmartphones()));
+
+        server = newProductAdapter.updateServer();
 
         data.users.add(new User("test", "test"));
         IObserver client = new Client(server, "test");

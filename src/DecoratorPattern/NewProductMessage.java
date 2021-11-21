@@ -5,6 +5,6 @@ public class NewProductMessage implements Message{
 
     @Override
     public String decorate() {
-        return null;
+        return "Novelty!\n";
     }
 }
