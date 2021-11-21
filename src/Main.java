@@ -164,8 +164,9 @@ public class Main {
                     for (int i = 0; i < smartphones.size(); ++i) {
                         Smartphones smartphone = smartphones.get(i);
                         System.out.println((i + 1)+ ". " + smartphone.toString());
-                        
                     }
+                    userChoice = scanner.nextLine();
+
                     break;
                 case "2":
                     for (int i = 0; i < laptops.size(); ++i) {
