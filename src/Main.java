@@ -1,12 +1,18 @@
 import AdapterPattern.DefaultNewProductMessage;
-import AdapterPattern.IDefaultNewProductMessage;
 import AdapterPattern.NewProductAdapter;
+import BridgePattern.BLaptop;
+import BridgePattern.BMonitor;
+import BridgePattern.BSmartphone;
+import BridgePattern.Colors.Black;
+import BridgePattern.Colors.Blue;
+import BridgePattern.Colors.Red;
+import BridgePattern.Product;
 import Data.Data;
-import DecoratorPattern.*;
 import DecoratorPattern.Decorators.CategoryDecorator;
 import DecoratorPattern.Decorators.DiscountPriceDecorator;
 import DecoratorPattern.Decorators.NameDecorator;
-import FactoryPattern.Factory;
+import DecoratorPattern.DiscountMessage;
+import DecoratorPattern.Message;
 import FactoryPattern.ProductTypes.Laptops;
 import FactoryPattern.ProductTypes.Monitors;
 import FactoryPattern.ProductTypes.Smartphones;
@@ -70,8 +76,7 @@ public class Main {
                     break;
                 case "3":
                     return;
-                default:
-                    System.out.println("no match");
+
             }
         }
     }
@@ -98,8 +103,7 @@ public class Main {
                     break;
                 case "3":
                     return;
-                default:
-                    System.out.println("no match");
+
             }
         }
     }
@@ -127,6 +131,7 @@ public class Main {
                     break;
                 case "4":
                     return;
+
             }
         }
     }
@@ -152,6 +157,7 @@ public class Main {
                     break;
                 case "3":
                     return;
+
             }
         }
     }
@@ -168,15 +174,40 @@ public class Main {
             PaymentMethod paymentMethod;
             BuyProduct shop;
             int cashback = 0;
+            int price = 0;
+            Product bSmartphone;
+            Product bLaptop;
+            Product bMonitor;
             switch (userChoice) {
                 case "1":
                     for (int i = 0; i < data.smartphones.size(); ++i) {
                         Smartphones smartphone = data.smartphones.get(i);
-                        System.out.println((i + 1)+ ". " + smartphone.toString());
+                        System.out.println((i + 1) + ". " + smartphone.toString());
                     }
                     System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Smartphones smartphone = data.smartphones.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. Black 0\n" +
+                            "2. Red 3000\n" +
+                            "3. Blue 5000");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            bSmartphone = new BSmartphone(new Black(), smartphone);
+                            bSmartphone.info();
+                            price = bSmartphone.getPrice();
+                            break;
+                        case "2":
+                            bSmartphone = new BSmartphone(new Red(), smartphone);
+                            bSmartphone.info();
+                            price = bSmartphone.getPrice();
+                            break;
+                        case "3":
+                            bSmartphone = new BSmartphone(new Blue(), smartphone);
+                            bSmartphone.info();
+                            price = bSmartphone.getPrice();
+                            break;
+                    }
                     System.out.println("1. PayPal\n" +
                             "2. Kaspi gold");
                     userChoice = scanner.nextLine();
@@ -184,13 +215,13 @@ public class Main {
                         case "1":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(smartphone.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                         case "2":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(smartphone.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                     }
@@ -198,11 +229,32 @@ public class Main {
                 case "2":
                     for (int i = 0; i < data.laptops.size(); ++i) {
                         Laptops laptop = data.laptops.get(i);
-                        System.out.println((i + 1)+ ". " + laptop.toString());
+                        System.out.println((i + 1) + ". " + laptop.toString());
                     }
                     System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Laptops laptop = data.laptops.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. Black 0\n" +
+                            "2. Red 3000\n" +
+                            "3. Blue 5000");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            bLaptop = new BLaptop(new Black(), laptop);
+                            bLaptop.info();
+                            price = bLaptop.getPrice();
+                            break;
+                        case "2":
+                            bLaptop = new BLaptop(new Red(), laptop);
+                            bLaptop.info();
+                            price = bLaptop.getPrice();
+                            break;
+                        case "3":
+                            bLaptop = new BLaptop(new Blue(), laptop);
+                            bLaptop.info();
+                            price = bLaptop.getPrice();
+                            break;
+                    }
                     System.out.println("1. PayPal\n" +
                             "2. Kaspi gold");
                     userChoice = scanner.nextLine();
@@ -210,13 +262,13 @@ public class Main {
                         case "1":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(laptop.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                         case "2":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(laptop.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                     }
@@ -224,11 +276,32 @@ public class Main {
                 case "3":
                     for (int i = 0; i < data.monitors.size(); ++i) {
                         Monitors monitor = data.monitors.get(i);
-                        System.out.println((i + 1)+ ". " + monitor.toString());
+                        System.out.println((i + 1) + ". " + monitor.toString());
                     }
                     System.out.println("Product number:");
                     userChoice = scanner.nextLine();
                     Monitors monitor = data.monitors.get(Integer.parseInt(userChoice) - 1);
+                    System.out.println("1. Black 0\n" +
+                            "2. Red 3000\n" +
+                            "3. Blue 5000");
+                    userChoice = scanner.nextLine();
+                    switch (userChoice) {
+                        case "1":
+                            bMonitor = new BMonitor(new Black(), monitor);
+                            bMonitor.info();
+                            price = bMonitor.getPrice();
+                            break;
+                        case "2":
+                            bMonitor = new BMonitor(new Red(), monitor);
+                            bMonitor.info();
+                            price = bMonitor.getPrice();
+                            break;
+                        case "3":
+                            bMonitor = new BMonitor(new Blue(), monitor);
+                            bMonitor.info();
+                            price = bMonitor.getPrice();
+                            break;
+                    }
                     System.out.println("1. PayPal\n" +
                             "2. Kaspi gold");
                     userChoice = scanner.nextLine();
@@ -236,19 +309,20 @@ public class Main {
                         case "1":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(monitor.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                         case "2":
                             paymentMethod = new PayPal();
                             shop = new Shop(paymentMethod);
-                            cashback = shop.getCashBack(monitor.getPrice());
+                            cashback = shop.getCashBack(price);
                             System.out.println("Successful! Your cashback: " + cashback);
                             break;
                     }
                     break;
                 case "4":
                     return;
+
             }
         }
     }
@@ -284,34 +358,30 @@ public class Main {
                     break;
                 case "3":
                     return;
-                default:
-                    System.out.println("no match");
+
             }
         }
     }
 
     // Create
     public static void createProductMenu() {
-
-        while (true) {
-            System.out.println("Menu\n" +
-                    "1. Smartphones\n" +
-                    "2. Laptops\n" +
-                    "3. Monitors\n" +
-                    "4. Back");
-            userChoice = scanner.nextLine();
-            if (userChoice.equals("4")) {
-                return;
-            }
-            createProduct(userChoice);
+        System.out.println("Menu\n" +
+                "1. Smartphones\n" +
+                "2. Laptops\n" +
+                "3. Monitors\n" +
+                "4. Back");
+        userChoice = scanner.nextLine();
+        if (userChoice.equals("4")) {
+            return;
         }
+        createProduct(userChoice);
     }
 
     public static void createProduct(String category) {
         int price;
         String name, CPU, RAM, Storage, Inch, GPU, Resolution, Nits, RefreshRate;
 
-        switch (userChoice) {
+        switch (category) {
             case "1":
                 System.out.println("Name:");
                 name = scanner.nextLine();
@@ -325,9 +395,9 @@ public class Main {
                 Inch = scanner.nextLine();
                 System.out.println("Price:");
                 price = scanner.nextInt();
-                Smartphones smartphone = Factory.getSmartphone(name, CPU, RAM, Storage, Inch, price);
-                data.smartphones.add(smartphone);
-                server.addMessage("New smartphone product");
+                newProductAdapter.getServer(server);
+                data.UpdateSmartphone(newProductAdapter.CreateSmartphone(name, CPU, RAM, Storage, Inch, price, data.getSmartphones()));
+                server = newProductAdapter.updateServer();
                 server.notifySubs();
                 break;
             case "2":
@@ -345,9 +415,9 @@ public class Main {
                 Inch = scanner.nextLine();
                 System.out.println("Price:");
                 price = scanner.nextInt();
-                Laptops laptop = Factory.getLaptop(name, CPU, GPU, RAM, Storage, Inch, price);
-                data.laptops.add(laptop);
-                server.addMessage("New product");
+                newProductAdapter.getServer(server);
+                data.UpdateLaptop(newProductAdapter.CreateLaptop(name, CPU, GPU, RAM, Storage, Inch, price, data.getLaptops()));
+                server = newProductAdapter.updateServer();
                 server.notifySubs();
                 break;
             case "3":
@@ -363,8 +433,10 @@ public class Main {
                 RefreshRate = scanner.nextLine();
                 System.out.println("Price:");
                 price = scanner.nextInt();
-                Monitors monitor = Factory.getMonitor(name, Inch, Resolution, Nits, RefreshRate, price);
-                data.monitors.add(monitor);
+                newProductAdapter.getServer(server);
+                data.UpdateMonitor(newProductAdapter.CreateMonitor(name, Inch, Resolution, Nits, RefreshRate, price, data.getMonitors()));
+                server = newProductAdapter.updateServer();
+                server.notifySubs();
                 break;
         }
     }
